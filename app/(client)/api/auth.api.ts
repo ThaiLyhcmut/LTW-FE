@@ -42,7 +42,7 @@ export const loginAuth = async (email: string, password: string) => {
       email: email,
       password: password,
     });
-    const result = await response("http://localhost:8000/login", Request);
+    const result = await response("https://ltw-be.onrender.com/login", Request);
     if (result === undefined) {
       console.error("Đăng nhập thất bại, không có phản hồi");
       return undefined;
@@ -60,7 +60,7 @@ export const checkAuth = async () => {
     const token = getToken();
     if (token) {
       const Request = request("GET", true, null);  // Sử dụng null cho body rỗng
-      const result = await response("http://localhost:8000/info", Request);
+      const result = await response("https://ltw-be.onrender.com/info", Request);
       if (result === undefined) {
         console.error("Kiểm tra quyền thất bại, không có phản hồi");
         return undefined;
@@ -81,7 +81,7 @@ export const otpAuth = async (email: string) => {
     const Request = request("POST", false, {
       email: email
     })
-    const result = await response("http://localhost:8000/otp", Request)
+    const result = await response("https://ltw-be.onrender.com/otp", Request)
     if (result == undefined) {
       console.error("error get otp")
       return undefined
@@ -101,7 +101,7 @@ export const registerAuth = async (username: string, email: string, password: st
       password: password,
       otp: otp
     })
-    const result = await response("http://localhost:8000/register", Request)
+    const result = await response("https://ltw-be.onrender.com/register", Request)
     if (result == undefined) {
       console.error("error register")
       return undefined
@@ -115,6 +115,11 @@ export const registerAuth = async (username: string, email: string, password: st
 }
 
 export const logoutAuth = () => {
-  deleteToken();
-  return true;
+  try{
+    deleteToken();
+    return true
+  }catch (error) {
+    console.log(error)
+    return false
+  }
 }
