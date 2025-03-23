@@ -1,16 +1,16 @@
 "use client"
 
-import { Auth } from "@/app/FirebaseConfig"
-import { signOut } from "firebase/auth"
+import { logoutAuth } from "@/app/(client)/api/auth.api"
 import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 
 export default function LogoutPage() {
   const Navigation = useRouter()
   useEffect(() => {
-    signOut(Auth).then(() => {
+    const logout = logoutAuth()
+    if (logout) {
       Navigation.push("/login")
-    })
+    }
   })
   return(
     <>

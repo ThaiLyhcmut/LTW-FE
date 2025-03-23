@@ -6,6 +6,10 @@ const getToken = (): string | null => {
   return localStorage.getItem("access_token");
 };
 
+const deleteToken = () => {
+  return localStorage.removeItem("access_token")
+}
+
 const response = async (url: string, data: RequestInit) => {
   const response = await fetch(url, data);
   if (!response.ok) {
@@ -102,9 +106,15 @@ export const registerAuth = async (username: string, email: string, password: st
       console.error("error register")
       return undefined
     }
+    saveToken(result.token)
     return result;
   }catch (error) {
     console.error(error)
     return undefined
   }
+}
+
+export const logoutAuth = () => {
+  deleteToken();
+  return true;
 }
