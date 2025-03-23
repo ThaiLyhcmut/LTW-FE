@@ -3,7 +3,7 @@ import { Quicksand } from "next/font/google";
 import "../globals.css";
 import Sider from "./components/sider/Sider";
 import Search from "./components/search/Search";
-import Play from "./components/play/Play";
+// import Play from "./components/play/Play";
 import { Suspense } from "react";
 
 const quicksand = Quicksand({
@@ -38,7 +38,7 @@ export default function RootLayout({
             </div>
           </div>
         </div>
-        <Play />
+        {/* <Play /> */}
       </body>
     </html>
   );
