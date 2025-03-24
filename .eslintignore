@@ -1,0 +1,16 @@
+# Bỏ qua thư mục build của Next.js
+.next/
+
+# Bỏ qua node_modules
+node_modules/
+
+# Bỏ qua các file cấu hình
+*.config.js
+*.config.cjs
+*.config.mjs
+
+# Bỏ qua public assets (nếu không cần kiểm tra)
+public/
+
+# Bỏ qua thư mục test
+tests/

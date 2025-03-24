@@ -5,9 +5,11 @@ import FormInput from "../../../components/form/FormInput";
 import Title from "../../../components/Title/Title";
 import { useRouter } from "next/navigation";
 import { otpAuth, registerAuth } from "@/app/(client)/api/auth.api";
+import { useAuth } from "@/app/(client)/context/AuthContext";
 
 export default function RegisterPage() {
   const [isOtp, setIsOtp] = useState<boolean>(false)
+  const {isLogin, login, logout} = useAuth()
   const Navigation = useRouter()
   const handleRegister = async (event: any) => {
     event.preventDefault();
@@ -26,10 +28,10 @@ export default function RegisterPage() {
         alert("Đăng ký không thành công")
       }else {
         alert("Dang Ky Thanh Cong")
+        login()
         Navigation.push("/")
       }
     }
-    const password = event.target.password.value;
   }
   return (
     <>
@@ -49,7 +51,7 @@ export default function RegisterPage() {
             required={true}
           />
             {
-              (isOtp)?(
+              (isOtp == false)?(
                 <>
                   <FormButton text="Lấy OTP" />
                 </>

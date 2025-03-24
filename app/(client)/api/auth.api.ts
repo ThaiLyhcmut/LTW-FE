@@ -67,7 +67,7 @@ export const checkAuth = async () => {
       }
       return result;
     } else {
-      console.error("Không tìm thấy token");
+      console.log("Không tìm thấy token");
       return undefined;
     }
   } catch (error) {

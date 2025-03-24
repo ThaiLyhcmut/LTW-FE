@@ -4,24 +4,27 @@ import FormButton from "../../../components/form/FormButton";
 import FormInput from "../../../components/form/FormInput";
 import Title from "../../../components/Title/Title";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/app/(client)/context/AuthContext";
 
 export default function LoginPage() {
+  const {isLogin, login, logout} = useAuth()
   const Navigation = useRouter()
   const handleLogin = (event: any) => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
-    const login = async (email: string, password: string) => {
+    const setLogin = async (email: string, password: string) => {
       const result = await loginAuth(email, password)
       if (result !== undefined) {
         alert("Dang nhap thanh cong")
+        login()
         Navigation.push("/")
       }
       else {
         alert("dang nhap khong chinh xac")
       }
     }
-    login(email, password)
+    setLogin(email, password)
   }
   return (
     <>

@@ -11,20 +11,13 @@ import { FaHeart } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 import { FiLogIn } from "react-icons/fi";
 import { IoPersonAdd } from "react-icons/io5";
-import { checkAuth } from "../../api/auth.api";
+import { useAuth } from "../../context/AuthContext";
+import { BsFillFilePersonFill } from "react-icons/bs";
 
 
 export default function SiderMenu(){
-
-  const [isLogin,setIsLogin] = useState<boolean>(false)
-  useEffect(() => {
-    const checkLogin = async () => {
-      const login = await checkAuth();
-      console.log(login)
-      setIsLogin(login !== undefined);
-    };
-    checkLogin()
-  }, [])
+  const { isLogin, logout } = useAuth();
+  console.log(isLogin)
   const pathname = usePathname();
   interface MenuLink {
     icon: ReactNode,
@@ -53,9 +46,9 @@ export default function SiderMenu(){
       link: "/wishlist"
     },
     {
-      icon: <FiLogOut/>,
-      title: "Dang xuat",
-      link: "/logout"
+      icon: <BsFillFilePersonFill/>,
+      title: "Thong tin",
+      link: "/info"
     },
     {
       icon: <FiLogIn/>,
@@ -86,16 +79,24 @@ export default function SiderMenu(){
                   </div>
                 )
               ):(
-                <li key={index} className={"xl:text-[22px] text-[14px] flex items-center mb-[15px] font-700 hover:text-primary capitalize line-clamp-1 " + (pathname === item.link ? "text-primary" : "text-white" )}>
-                  {item.icon}
-                  <Link href={item.link} className="ml-[20px]">{item.title}</Link>
-                </li>
+                (item.link == "/info")?(
+                  <>
+                    <div key={index}>
+                    </div>
+                  </>
+                ):(
+                  <>
+                    <li key={index} className={"xl:text-[22px] text-[14px] flex items-center mb-[15px] font-700 hover:text-primary capitalize line-clamp-1 " + (pathname === item.link ? "text-primary" : "text-white" )}>
+                      {item.icon}
+                      <Link href={item.link} className="ml-[20px]">{item.title}</Link>
+                    </li>
+                  </>
+                )
+                
               )
             ):(
               <div key={index}></div>
             )
-
-            
           ))}
         </ul>
        </nav>
