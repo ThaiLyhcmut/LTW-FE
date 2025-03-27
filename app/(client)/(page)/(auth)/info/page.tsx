@@ -1,15 +1,27 @@
 "use client"
 
-import { logoutAuth } from "@/app/(client)/api/auth.api"
+import { checkAuth, logoutAuth } from "@/app/(client)/api/auth.api"
 import { useAuth } from "@/app/(client)/context/AuthContext"
 import { useRouter } from "next/navigation"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export default function InfoPage() {
   const router = useRouter()
-  const { logout, auth } = useAuth()
+  const { logout } = useAuth()
+  const [ auth, setAuth ] = useState<any>()
   const [loading, setLoading] = useState(false)
-
+  useEffect(() => {
+    const getInfo = async () => {
+      const data = await checkAuth()
+      if (data != undefined) {
+        setAuth(data)
+        setLoading(false)
+      }
+    }
+    getInfo()
+    
+  }, [])
+  console.log(auth)
   // Xử lý đăng xuất
   const handleLogout = async () => {
     setLoading(true)

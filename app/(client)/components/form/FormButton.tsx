@@ -7,7 +7,7 @@ export default function FormButton(props: {
     <>
       <button
         type="submit"
-        className="w-full h-[50px] bg-primary rounded-[6px] text-white text-center text-[16px] font-[700]"
+        className="w-full h-[50px] bg-sky-400 rounded-[6px] text-white text-center text-[16px] font-[700]"
       >
         {text}
       </button>

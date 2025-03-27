@@ -80,17 +80,13 @@ export default function SiderMenu(){
                 )
               ):(
                 (item.link == "/info")?(
-                  <>
                     <div key={index}>
                     </div>
-                  </>
                 ):(
-                  <>
                     <li key={index} className={"xl:text-[22px] text-[14px] flex items-center mb-[15px] font-700 hover:text-primary capitalize line-clamp-1 " + (pathname === item.link ? "text-primary" : "text-white" )}>
                       {item.icon}
                       <Link href={item.link} className="ml-[20px]">{item.title}</Link>
                     </li>
-                  </>
                 )
                 
               )

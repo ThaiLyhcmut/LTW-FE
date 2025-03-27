@@ -8,29 +8,31 @@ import { otpAuth, registerAuth } from "@/app/(client)/api/auth.api";
 import { useAuth } from "@/app/(client)/context/AuthContext";
 
 export default function RegisterPage() {
-  const [isOtp, setIsOtp] = useState<boolean>(false)
   const {isLogin, login, logout} = useAuth()
   const Navigation = useRouter()
+  const handleGetOtp = async (event: any) => {
+    event.preventDefault();
+    const email = event.target.email.value;
+    const check = await otpAuth(email)
+    if (check != undefined) {
+      alert("gui otp thanh cong")
+    }else {
+      alert("gui otp khong thanh cong")
+    }
+  }
   const handleRegister = async (event: any) => {
     event.preventDefault();
     const email = event.target.email.value;
-    if (!isOtp) {
-      const check = await otpAuth(email)
-      if (check != undefined) {
-        setIsOtp(true)
-      }
+    const fullName = event.target.fullName.value;
+    const password = event.target.password.value;
+    const otp = event.target.otp.value;
+    const register = await registerAuth(fullName, email, password, otp)
+    if (register == undefined) {
+      alert("Đăng ký không thành công")
     }else {
-      const fullName = event.target.fullName.value;
-      const password = event.target.password.value;
-      const otp = event.target.otp.value;
-      const register = await registerAuth(fullName, email, password, otp)
-      if (register == undefined) {
-        alert("Đăng ký không thành công")
-      }else {
-        alert("Dang Ky Thanh Cong")
-        login()
-        Navigation.push("/")
-      }
+      alert("Dang Ky Thanh Cong")
+      login()
+      Navigation.push("/")
     }
   }
   return (
@@ -50,13 +52,7 @@ export default function RegisterPage() {
             placeholder="Ví dụ: levana@gmail.com"
             required={true}
           />
-            {
-              (isOtp == false)?(
-                <>
-                  <FormButton text="Lấy OTP" />
-                </>
-              ):(
-                <>
+                  <button className="w-full h-[50px] bg-sky-400 rounded-[6px] text-white text-center text-[16px] font-[700]" type="button" onClick={handleGetOtp} >Lấy OTP</button>
                   <FormInput
                     label="Họ Tên"
                     type="text"
@@ -80,10 +76,6 @@ export default function RegisterPage() {
                     required={true}
                   />
                   <FormButton text="Đăng Ký" />
-                </>
-              )
-            }
-            
         </form>
       </div>
     </>

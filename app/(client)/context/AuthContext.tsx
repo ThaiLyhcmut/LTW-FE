@@ -6,20 +6,18 @@ interface AuthContextType {
   isLogin: boolean;
   login: () => void;
   logout: () => void;
-  auth: any;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [isLogin, setIsLogin] = useState<boolean>(false);
-
   useEffect(() => {
     const checkLoginStatus = async () => {
       const login = await checkAuth();
       setIsLogin(login !== undefined);
     };
-    const auth = checkLoginStatus();
+    checkLoginStatus();
   }, []);
 
   const login = async () => {
@@ -31,7 +29,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ isLogin, login, logout, auth }}>
+    <AuthContext.Provider value={{ isLogin, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
