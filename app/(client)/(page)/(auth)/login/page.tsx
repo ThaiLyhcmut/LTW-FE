@@ -1,5 +1,5 @@
 "use client"
-import { loginAuth } from "@/app/(client)/api/auth.api";
+import { checkAuth, loginAuth } from "@/app/(client)/api/auth.api";
 import FormButton from "../../../components/form/FormButton";
 import FormInput from "../../../components/form/FormInput";
 import Title from "../../../components/Title/Title";
@@ -16,8 +16,9 @@ export default function LoginPage() {
     const setLogin = async (email: string, password: string) => {
       const result = await loginAuth(email, password)
       if (result !== undefined) {
+        const data = await checkAuth();
         alert("Dang nhap thanh cong")
-        login()
+        login(data)
         Navigation.push("/")
       }
       else {

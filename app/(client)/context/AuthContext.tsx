@@ -4,7 +4,7 @@ import { checkAuth } from "../api/auth.api";
 
 interface AuthContextType {
   isLogin: boolean;
-  login: () => void;
+  login: (data: any) => void;
   logout: () => void;
   auth: any;
 }
@@ -13,21 +13,24 @@ const AuthContext = createContext<AuthContextType | null>(null);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [isLogin, setIsLogin] = useState<boolean>(false);
-
+  const [auth, setAuth] = useState();
   useEffect(() => {
     const checkLoginStatus = async () => {
       const login = await checkAuth();
       setIsLogin(login !== undefined);
+      setAuth(login)
     };
-    const auth = checkLoginStatus();
+    checkLoginStatus();
   }, []);
 
-  const login = async () => {
+  const login = async (data: any) => {
     setIsLogin(true);
+    setAuth(data)
   };
 
   const logout = () => {
     setIsLogin(false);
+    setAuth(undefined)
   };
 
   return (

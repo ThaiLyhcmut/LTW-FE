@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Quicksand } from "next/font/google";
 import "../globals.css";
+import "tailwindcss";
+
 import Sider from "./components/sider/Sider";
 import Search from "./components/search/Search";
-// import Play from "./components/play/Play";
+import Play from "./components/play/Play";
 import { Suspense } from "react";
 import { AuthProvider } from "./context/AuthContext";
 
@@ -42,7 +44,7 @@ export default function RootLayout({
               </div>
             </div>
           </div>
-          {/* <Play /> */}
+          <Play />
         </AuthProvider>
       </body>
     </html>

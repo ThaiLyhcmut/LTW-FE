@@ -50,39 +50,30 @@ export default function RegisterPage() {
             placeholder="Ví dụ: levana@gmail.com"
             required={true}
           />
-            {
-              (isOtp == false)?(
-                <>
-                  <FormButton text="Lấy OTP" />
-                </>
-              ):(
-                <>
-                  <FormInput
-                    label="Họ Tên"
-                    type="text"
-                    name="fullName"
-                    id="fullName"
-                    placeholder="Ví dụ: Le Van A"
-                    required={true}
-                  />
-                  <FormInput
-                    label="Mật Khẩu"
-                    type="password"
-                    name="password"
-                    id="password"
-                    required={true}
-                  />
-                  <FormInput
-                    label="OTP"
-                    type="otp"
-                    name="otp"
-                    id="otp"
-                    required={true}
-                  />
-                  <FormButton text="Đăng Ký" />
-                </>
-              )
-            }
+          <FormButton text="Lấy OTP" />
+          <FormInput
+            label="Họ Tên"
+            type="text"
+            name="fullName"
+            id="fullName"
+            placeholder="Ví dụ: Le Van A"
+            required={true}
+          />
+          <FormInput
+            label="Mật Khẩu"
+            type="password"
+            name="password"
+            id="password"
+            required={true}
+          />
+          <FormInput
+            label="OTP"
+            type="otp"
+            name="otp"
+            id="otp"
+            required={true}
+          />
+          <FormButton text="Đăng Ký" />
             
         </form>
       </div>
