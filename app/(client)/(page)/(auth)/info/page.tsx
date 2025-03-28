@@ -7,7 +7,7 @@ import { useState } from "react"
 
 export default function InfoPage() {
   const router = useRouter()
-  const { isLogin, logout, auth } = useAuth()
+  const { logout, auth } = useAuth()
   const [loading, setLoading] = useState(false)
   // Xử lý đăng xuất
   const handleLogout = async () => {

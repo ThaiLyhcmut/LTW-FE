@@ -2,7 +2,7 @@
 import { Url } from "next/dist/shared/lib/router/router";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode } from "react";
 
 import { FaHome } from "react-icons/fa";
 import { FaMusic } from "react-icons/fa";

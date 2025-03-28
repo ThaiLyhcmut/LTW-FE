@@ -1,7 +1,5 @@
 import Link from "next/link";
-import { FaHeart } from "react-icons/fa";
 import ButtonPlay from "../../components/button/ButtonPlay";
-import ButtonHeart from "../../components/button/ButtonHeart";
 
 export default function SongItem(props: any) {
   const {
