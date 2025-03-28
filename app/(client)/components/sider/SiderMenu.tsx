@@ -8,11 +8,11 @@ import { FaHome } from "react-icons/fa";
 import { FaMusic } from "react-icons/fa";
 import { FaPodcast } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
-import { FiLogOut } from "react-icons/fi";
 import { FiLogIn } from "react-icons/fi";
 import { IoPersonAdd } from "react-icons/io5";
 import { useAuth } from "../../context/AuthContext";
 import { BsFillFilePersonFill } from "react-icons/bs";
+import { IoIosAlbums } from "react-icons/io";
 
 
 export default function SiderMenu(){
@@ -39,6 +39,11 @@ export default function SiderMenu(){
       icon: <FaPodcast/>,
       title: "Ca si",
       link: "/singer"
+    },
+    {
+      icon: <IoIosAlbums/>,
+      title: "Album",
+      link: "/album"
     },
     {
       icon: <FaHeart/>,
@@ -69,7 +74,7 @@ export default function SiderMenu(){
             (isLogin != undefined)?(
               (isLogin == true)?(
                 (item.link != "/login" && item.link != "/register")?(
-                  <li key={index} className={"flex items-center mb-[15px] font-700 hover:text-primary xl:text-[22px] text-[14px] capitalize line-clamp-1 " + (pathname === item.link ? "text-primary" : "text-white" )}>
+                  <li key={index} className={"flex items-center mb-[15px] font-700 hover:text-[#00ADEF] xl:text-[22px] text-[14px] capitalize line-clamp-1 " + (pathname === item.link ? "text-[#00ADEF]" : "text-white" )}>
                     {item.icon}
                     <Link href={item.link} className="ml-[20px]">{item.title}</Link>
                   </li>
@@ -82,7 +87,7 @@ export default function SiderMenu(){
                     <div key={index}>
                     </div>
                 ):(
-                    <li key={index} className={"xl:text-[22px] text-[14px] flex items-center mb-[15px] font-700 hover:text-primary capitalize line-clamp-1 " + (pathname === item.link ? "text-primary" : "text-white" )}>
+                    <li key={index} className={"xl:text-[22px] text-[14px] flex items-center mb-[15px] font-700 hover:text-[#00ADEF] capitalize line-clamp-1 " + (pathname === item.link ? "text-[#00ADEF]" : "text-white" )}>
                       {item.icon}
                       <Link href={item.link} className="ml-[20px]">{item.title}</Link>
                     </li>

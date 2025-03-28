@@ -1,7 +1,9 @@
-export default function CategoryHome() {
+import Section_1 from "./Section_1";
+
+export default function AlbumPage() {
   return(
     <>
-      <h1>Day la Category</h1>
+      <Section_1/>
     </>
   )
 }

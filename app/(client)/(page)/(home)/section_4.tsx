@@ -11,7 +11,7 @@ export default function Section_4() {
   const [dataAlbum, setDataAlbum] = useState<any>(undefined)
   useEffect(() => {
     const getData = async () => {
-      const DataAlbum = await getAlbum(1, 1, 10);
+      const DataAlbum = await getAlbum(1, 10);
       setDataAlbum(DataAlbum)
     }
     getData()

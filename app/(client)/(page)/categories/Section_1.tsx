@@ -1,11 +1,11 @@
 "use client"
+import { useEffect, useState } from "react";
+import { getTopic } from "../../api/topic.api";
 import CardList from "../../components/Card/CardList";
 import Title from "../../components/Title/Title";
-import { getTopic } from "../../api/topic.api";
 import { useAuth } from "../../context/AuthContext";
-import { useEffect, useState } from "react";
 
-export default function Section_2() {
+export default function Section_1() {
   const { auth } = useAuth()
   const [dataTopic, setDataTopic] = useState<any>(undefined)
   useEffect(() => {
@@ -15,20 +15,13 @@ export default function Section_2() {
     }
     getData()
   }, [auth])
-
-
-  return (
+  if (!dataTopic) return <div>loading ...</div>
+  return(
     <>
-      {!dataTopic?.data?.length ? (
-        <div>Loading...</div>
-      ) : (
-        <div className="mt-[30px]">
-          <Title text={"Danh Mục Nổi Bật"} />
-          <CardList data={dataTopic.data} url="categories" />
-        </div>
-      )}
-
-
+      <div className="mt-[30px]">
+        <Title text={"Danh Mục Bài Hát"}/>
+        <CardList data={dataTopic.data} url="categories"/>
+      </div>
     </>
   )
 }
