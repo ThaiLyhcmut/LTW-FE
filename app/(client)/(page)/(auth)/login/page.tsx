@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/app/(client)/context/AuthContext";
 
 export default function LoginPage() {
-  const {isLogin, login, logout} = useAuth()
+  const { login } = useAuth()
   const Navigation = useRouter()
   const handleLogin = (event: any) => {
     event.preventDefault();

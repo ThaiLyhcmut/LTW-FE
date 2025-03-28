@@ -1,9 +1,9 @@
 "use client"
 
-import { checkAuth, logoutAuth } from "@/app/(client)/api/auth.api"
+import { logoutAuth } from "@/app/(client)/api/auth.api"
 import { useAuth } from "@/app/(client)/context/AuthContext"
 import { useRouter } from "next/navigation"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 export default function InfoPage() {
   const router = useRouter()

@@ -1,5 +1,4 @@
 "use client"
-import { useState } from "react";
 import FormButton from "../../../components/form/FormButton";
 import FormInput from "../../../components/form/FormInput";
 import Title from "../../../components/Title/Title";
@@ -8,7 +7,7 @@ import { checkAuth, otpAuth, registerAuth } from "@/app/(client)/api/auth.api";
 import { useAuth } from "@/app/(client)/context/AuthContext";
 
 export default function RegisterPage() {
-  const {isLogin, login, logout} = useAuth()
+  const { login } = useAuth()
   const Navigation = useRouter()
   const handleGetOtp = async (event: any) => {
     event.preventDefault();
@@ -53,7 +52,13 @@ export default function RegisterPage() {
             placeholder="Ví dụ: levana@gmail.com"
             required={true}
           />
-          <FormButton text="Lấy OTP" />
+          <button
+            type="button"
+            className="w-full h-[50px] bg-[#00ADEF] rounded-[6px] text-white text-center text-[16px] font-[700] mb-[20px]"
+            onClick={handleGetOtp}
+          >
+            GET OTP
+          </button>
           <FormInput
             label="Họ Tên"
             type="text"
