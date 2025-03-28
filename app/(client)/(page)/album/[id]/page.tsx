@@ -22,9 +22,9 @@ export default function SongsByAlbumPage() {
   return(
     <>
      <CardInfo 
-      image={data.image_url}
-      title={data.name}
-      desc={data.description}
+      image={data.cover_url}
+      title={data.title}
+      desc={`release: ${data.description}`}
      />
      <Section_2 id={id as string}/>
      

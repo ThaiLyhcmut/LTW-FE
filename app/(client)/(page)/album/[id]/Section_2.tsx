@@ -12,10 +12,7 @@ export default function Section_2(props: {
   const [data, setData] = useState<any>()
   useEffect(() => {
     const getData = async() => {
-
-      console.log(id)
       const Data = await getAlbumSong(id, 1, 10);
-      console.log(Data)
       if (Data !== undefined) {
         setData(Data)
       }
