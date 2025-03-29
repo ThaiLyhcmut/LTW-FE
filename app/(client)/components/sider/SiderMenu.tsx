@@ -17,8 +17,7 @@ import { FaHeadphones } from "react-icons/fa6";
 
 
 export default function SiderMenu(){
-  const { isLogin, logout } = useAuth();
-  console.log(isLogin)
+  const { isLogin } = useAuth();
   const pathname = usePathname();
   interface MenuLink {
     icon: ReactNode,

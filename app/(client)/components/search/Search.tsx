@@ -4,6 +4,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { BiMenu } from "react-icons/bi";
 import { FaMagnifyingGlass } from "react-icons/fa6";
+import ConnectWallet from "../connectWallet/connectWallet";
 
 export default function Search() {
   const router = useRouter()
@@ -46,6 +47,9 @@ export default function Search() {
             <FaMagnifyingGlass />
           </button>
         </form>
+        <div className="mt-[20px] ml-[20px]">
+          <ConnectWallet/>
+        </div>
       </div>
     </>
   );

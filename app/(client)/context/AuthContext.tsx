@@ -1,6 +1,9 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
 import { checkAuth } from "../api/auth.api";
+import { createAppKit } from "@reown/appkit";
+import { EthersAdapter } from "@reown/appkit-adapter-ethers";
+import { sepolia } from "@reown/appkit/networks";
 
 interface AuthContextType {
   isLogin: boolean;
@@ -10,6 +13,8 @@ interface AuthContextType {
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
+
+
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [isLogin, setIsLogin] = useState<boolean>(false);
@@ -34,7 +39,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ isLogin, login, logout,auth }}>
+    <AuthContext.Provider value={{ isLogin, login, logout, auth }}>
       {children}
     </AuthContext.Provider>
   );

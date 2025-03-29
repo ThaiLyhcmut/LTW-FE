@@ -2,19 +2,17 @@ import type { Metadata } from "next";
 import { Quicksand } from "next/font/google";
 import "../globals.css";
 import "tailwindcss";
-
 import Sider from "./components/sider/Sider";
 import Search from "./components/search/Search";
 import Play from "./components/play/Play";
 import { Suspense } from "react";
 import { AuthProvider } from "./context/AuthContext";
-
+import ConnectWallet from "./components/connectWallet/connectWallet";
 const quicksand = Quicksand({
   subsets: ["latin"],
   variable: "--font-quicksand",
   display: "swap",
 });
-
 
 export const metadata: Metadata = {
   title: "Web Music",
@@ -28,6 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      
       <body className={`${quicksand.className} bg-[#292929] text-white`}>
         <AuthProvider>
           <div className="container mx-auto ">
