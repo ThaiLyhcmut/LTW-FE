@@ -4,6 +4,7 @@ import Section_2 from "./Section_2";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { getDetaiAlbum } from "@/app/(client)/api/album.api";
+import Loading from "@/app/(client)/components/loading/loading";
 
 
 export default function SongsByAlbumPage() {
@@ -18,13 +19,13 @@ export default function SongsByAlbumPage() {
     }
     getData()
   },[data])
-  if (!data) return <div>Loading...</div>
+  if (!data) return <div><Loading/></div>
   return(
     <>
      <CardInfo 
       image={data.cover_url}
       title={data.title}
-      desc={`release: ${data.description}`}
+      desc={`singer: ${data.name} | release: ${data.release_year}`}
      />
      <Section_2 id={id as string}/>
      

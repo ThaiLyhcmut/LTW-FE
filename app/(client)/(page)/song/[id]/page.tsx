@@ -28,7 +28,7 @@ export default function SongDetailPage() {
 
   return (
     <>
-      <CardInfo image={data.cover_url} title={data.title} desc={""} />
+      <CardInfo image={data.cover_url} title={data.title} desc={data.name} />
       <Section_2 lyric={data.lyric} />
       <Section_3 id={id as string} />
       <Comment id={id as string}/>
