@@ -8,8 +8,9 @@ import { useEffect, useState } from "react";
 
 export default function Section_2(props: {
   id: string
+  name: string
 }){
-  const { id } = props
+  const { id, name } = props
   const [data, setData] = useState<any>()
   useEffect(() => {
     const getData = async() => {
@@ -24,7 +25,7 @@ export default function Section_2(props: {
   return(
     <>
       <div className="mt-[30px]">
-        <Title text="Danh Sách Bài Hát"/>
+        <Title text={`Danh Sách Bài Hát Trong Ablum ${name}`}/>
         <SongList_2 data={data.data}/>
       </div>
     </>

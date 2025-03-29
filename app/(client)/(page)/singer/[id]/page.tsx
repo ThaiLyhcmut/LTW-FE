@@ -25,7 +25,7 @@ export default function SingerDetailPage() {
       title={data.name}
       desc={`country: ${data.country_code}`}
      />
-     <Section_2 singer_id = {id as string}/>
+     <Section_2 singer_id = {id as string} name={data.name}/>
     </>
   )
 }

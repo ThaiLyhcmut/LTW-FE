@@ -26,7 +26,7 @@ export default function SongsByCategoriesPage() {
       title={data.name}
       desc={data.description}
      />
-     <Section_2 id={id as string}/>
+     <Section_2 id={id as string} name={data.name}/>
      
     </>
   )

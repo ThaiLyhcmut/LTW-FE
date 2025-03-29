@@ -6,9 +6,10 @@ import Title from "@/app/(client)/components/Title/Title";
 import { useEffect, useState } from "react";
 
 export default function Section_2(props: {
-  singer_id: string
+  singer_id: string,
+  name: string
 }){
-  const { singer_id } = props;
+  const { singer_id, name } = props;
   const [ data, setData ] = useState<any>()
   useEffect(() => {
     const getData = async() => {
@@ -21,7 +22,7 @@ export default function Section_2(props: {
   return(
     <>
       <div className="mt-[30px]">
-        <Title text="Danh Sách Bài Hát"/>
+        <Title text={`Danh Sách Bài Hát Cua Singer ${name}`}/>
         <SongList_2 data={data.data}/>
       </div>
     </>

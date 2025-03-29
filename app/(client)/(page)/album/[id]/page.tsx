@@ -27,7 +27,7 @@ export default function SongsByAlbumPage() {
       title={data.title}
       desc={`singer: ${data.name} | release: ${data.release_year}`}
      />
-     <Section_2 id={id as string}/>
+     <Section_2 id={id as string} name={data.title}/>
      
     </>
   )
