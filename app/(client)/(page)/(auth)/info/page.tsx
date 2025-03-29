@@ -1,6 +1,7 @@
 "use client"
 
 import { logoutAuth } from "@/app/(client)/api/auth.api"
+import Loading from "@/app/(client)/components/loading/loading"
 import { useAuth } from "@/app/(client)/context/AuthContext"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
@@ -43,7 +44,7 @@ export default function InfoPage() {
           </button>
         </div>
       ) : (
-        <p>Bạn chưa đăng nhập.</p>
+        <div><Loading/></div>
       )}
     </div>
   )

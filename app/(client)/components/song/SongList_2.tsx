@@ -14,7 +14,7 @@ export default function SongList_2(props: {
             key={index}
             image={item.cover_url}
             title={item.title}
-            singer={item.singer}
+            singer={item.name}
             time={item.time}
             audio={item.file_url}
             wishlist={item.wishlist}

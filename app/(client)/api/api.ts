@@ -1,4 +1,4 @@
-export const HTTP_URL = "https://ltw-be.thaily.id.vn"
+export const HTTP_URL = "http://localhost:8000"
 
 export const saveToken = (token: string, country_code: string) => {
   localStorage.setItem("access_token", token);

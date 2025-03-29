@@ -13,7 +13,7 @@ export default function SongList(props: {
             id={item.id}
             image={item.cover_url}
             title={item.title}
-            singer={item.singer}
+            singer={item.name}
             audio={item.file_url}
           />
         ))}

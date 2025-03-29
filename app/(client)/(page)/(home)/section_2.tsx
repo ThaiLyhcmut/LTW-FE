@@ -4,6 +4,7 @@ import Title from "../../components/Title/Title";
 import { getTopic } from "../../api/topic.api";
 import { useAuth } from "../../context/AuthContext";
 import { useEffect, useState } from "react";
+import Loading from "../../components/loading/loading";
 
 export default function Section_2() {
   const { auth } = useAuth()
@@ -20,7 +21,7 @@ export default function Section_2() {
   return (
     <>
       {!dataTopic?.data?.length ? (
-        <div>Loading...</div>
+        <div><Loading/></div>
       ) : (
         <div className="mt-[30px]">
           <Title text={"Danh Mục Nổi Bật"} />

@@ -15,7 +15,7 @@ export default function CardList(props: {
             title={item.name || item.title}
             link={`${url}/${item.id}`}
             id={item.id}
-            desc={ item.description?item.description:(item.release_year?`Release: ${item.release_year}`:"") }
+            desc={ item.description?item.description:(item.release_year?`Singer: ${item.name} Release: ${item.release_year}`:"") }
           />
         ))}
       </div>

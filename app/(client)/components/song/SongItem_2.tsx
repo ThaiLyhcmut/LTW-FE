@@ -32,6 +32,7 @@ export default function SongItem_2(props: any) {
           <div className="font-[700] text-[14px] truncate overflow-hidden">
             <Link href={`/song/${id}`}>{title}</Link>
           </div>
+          <div className="text-[#FFFFFF80] ml-[30px] font-[400] text-[12px] mb-[5px]">{singer}</div>
         </div>
         <div className="flex-1 flex items-center justify-end">
           <div className="font-[400] text-[14px] mr-[18px]">{time}</div>

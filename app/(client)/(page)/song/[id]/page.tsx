@@ -5,6 +5,8 @@ import CardInfo from "@/app/(client)/components/Card/CardInfo";
 import Section_2 from "./Section_2";
 import Section_3 from "./Section_3";
 import { useEffect, useState } from "react";
+import Loading from "@/app/(client)/components/loading/loading";
+import Comment from "@/app/(client)/components/comment/comment";
 
 export default function SongDetailPage() {
   const { id } = useParams(); // Lấy params từ URL
@@ -22,13 +24,14 @@ export default function SongDetailPage() {
     fetchData();
   }, [id]);
 
-  if (!data) return <p>Loading...</p>;
+  if (!data) return <div><Loading/></div>
 
   return (
     <>
       <CardInfo image={data.cover_url} title={data.title} desc={""} />
       <Section_2 lyric={data.lyric} />
       <Section_3 id={id as string} />
+      <Comment id={id as string}/>
     </>
   );
 }

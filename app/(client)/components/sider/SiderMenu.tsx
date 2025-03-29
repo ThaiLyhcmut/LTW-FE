@@ -13,6 +13,7 @@ import { IoPersonAdd } from "react-icons/io5";
 import { useAuth } from "../../context/AuthContext";
 import { BsFillFilePersonFill } from "react-icons/bs";
 import { IoIosAlbums } from "react-icons/io";
+import { FaHeadphones } from "react-icons/fa6";
 
 
 export default function SiderMenu(){
@@ -29,6 +30,11 @@ export default function SiderMenu(){
       icon: <FaHome/>,
       title: "Trang chu",
       link: "/"
+    },
+    {
+      icon: <FaHeadphones />,
+      title: "Nhac",
+      link: "/song"
     },
     {
       icon: <FaMusic/>,

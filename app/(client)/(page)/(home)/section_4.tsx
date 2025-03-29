@@ -4,6 +4,7 @@ import CardList from "../../components/Card/CardList";
 import Title from "../../components/Title/Title";
 import { useAuth } from "../../context/AuthContext";
 import { getAlbum } from "../../api/album.api";
+import Loading from "../../components/loading/loading";
 
 
 export default function Section_4() {
@@ -19,7 +20,7 @@ export default function Section_4() {
   return (
     <>
       {!dataAlbum?.data?.length ? (
-        <div>Loading...</div>
+        <div><Loading/></div>
       ) :(
         <div className="mt-[30px]">
           <Title text={"Album Nổi Bật"} />
