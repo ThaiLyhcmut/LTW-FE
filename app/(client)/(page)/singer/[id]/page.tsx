@@ -5,6 +5,7 @@ import Section_2 from "./Section_2";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { getDetailSinger } from "@/app/(client)/api/singer.api";
+import Loading from "@/app/(client)/components/loading/loading";
 
 export default function SingerDetailPage() {
   const { id } = useParams()
@@ -17,7 +18,7 @@ export default function SingerDetailPage() {
     }
     getData()
   }, [id])
-  if(!data) return <div>loading...</div>
+  if(!data) return <div><Loading/></div>
   return(
     <>
       <CardInfo 

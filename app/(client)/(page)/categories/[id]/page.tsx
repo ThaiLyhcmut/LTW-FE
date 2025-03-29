@@ -4,6 +4,7 @@ import Section_2 from "./Section_2";
 import { getDetaiTopic } from "@/app/(client)/api/topic.api";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import Loading from "@/app/(client)/components/loading/loading";
 
 
 export default function SongsByCategoriesPage() {
@@ -18,7 +19,7 @@ export default function SongsByCategoriesPage() {
     }
     getData()
   },[data])
-  if (!data) return <div>Loading...</div>
+  if (!data) return <div><Loading/></div>
   return(
     <>
      <CardInfo 

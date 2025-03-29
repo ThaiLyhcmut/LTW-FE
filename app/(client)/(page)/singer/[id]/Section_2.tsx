@@ -1,6 +1,7 @@
 "use client";
 
 import { getSingerSong } from "@/app/(client)/api/song.api";
+import Loading from "@/app/(client)/components/loading/loading";
 import SongList_2 from "@/app/(client)/components/song/SongList_2";
 import Title from "@/app/(client)/components/Title/Title";
 import { useEffect, useState } from "react";
@@ -18,7 +19,7 @@ export default function Section_2(props: {
     }
     getData()
   }, [])
-  if (!data) return <div>Loading...</div>
+  if (!data) return <div><Loading/></div>
   return(
     <>
       <div className="mt-[30px]">
