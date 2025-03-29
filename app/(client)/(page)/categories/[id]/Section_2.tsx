@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { getTopicSong } from "@/app/(client)/api/song.api";
 import Loading from "@/app/(client)/components/loading/loading";

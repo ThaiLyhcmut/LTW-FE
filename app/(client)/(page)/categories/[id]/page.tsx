@@ -1,4 +1,5 @@
-"use client"
+"use client";
+
 import CardInfo from "@/app/(client)/components/Card/CardInfo";
 import Section_2 from "./Section_2";
 import { getDetaiTopic } from "@/app/(client)/api/topic.api";

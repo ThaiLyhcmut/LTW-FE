@@ -1,4 +1,5 @@
-"use client"
+"use client";
+
 import { useEffect, useState } from "react";
 import { getTopic } from "../../api/topic.api";
 import CardList from "../../components/Card/CardList";
