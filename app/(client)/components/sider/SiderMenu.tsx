@@ -14,7 +14,9 @@ import { useAuth } from "../../context/AuthContext";
 import { BsFillFilePersonFill } from "react-icons/bs";
 import { IoIosAlbums } from "react-icons/io";
 import { FaHeadphones } from "react-icons/fa6";
-
+import { MdContactSupport } from "react-icons/md";
+import { IoWallet } from "react-icons/io5";
+import { MdBroadcastOnPersonal } from "react-icons/md";
 
 export default function SiderMenu(){
   const { isLogin } = useAuth();
@@ -54,6 +56,21 @@ export default function SiderMenu(){
       icon: <FaHeart/>,
       title: "Bai hat yeu thich",
       link: "/wishlist"
+    },
+    {
+      icon: <IoWallet />,
+      title: "Lịch sử giao dịch",
+      link: "/history"
+    },
+    {
+      icon: <MdBroadcastOnPersonal />,
+      title: "Giới thiệu",
+      link: "/about"
+    },
+    {
+      icon: <MdContactSupport/>,
+      title: "Trợ giúp",
+      link: "/help"
     },
     {
       icon: <BsFillFilePersonFill/>,

@@ -23,7 +23,7 @@ export default function Search() {
   }
   return (
     <>
-      <div className="sticky top-[20px] left-[20px] z-[999] flex justify-center items-center">
+      <div className="top-[20px] left-[20px] flex justify-center items-center">
         <button className="md:hidden w-[24px] mt-[20px] bg-BGD rounded-[50px] py-[15px] px-[30px]"
           onClick={handleMenu}
         >
