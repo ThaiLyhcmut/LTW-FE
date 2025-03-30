@@ -3,7 +3,7 @@
 
 export default function AboutPage() {
   const data = {
-    title: "CHUYÊN ÂM NHẠC PHONG CÁCH, HIỆN ĐẠI",
+    title: "MUSICTHAILY ÂM NHẠC PHONG CÁCH, HIỆN ĐẠI",
     desc: "Chúng tôi chuyên cung cấp nhiều loại âm nhạc ở nhiều quốc gia, được sáng tác bởi những ca sĩ nổi tiếng và hiện đại.",
     type1: {
       total: "200+",
@@ -17,10 +17,10 @@ export default function AboutPage() {
       total: "30,000+",
       desc: "Khách Hàng"
     },
-    section1: ["https://project3-six-sigma.vercel.app/assets/img/img1.png", "https://project3-six-sigma.vercel.app/assets/img/icon1.svg", "https://project3-six-sigma.vercel.app/assets/img/icon1.svg"],
+    section1: ["https://media-cdn-v2.laodong.vn/Storage/NewsPortal/2023/1/1/1133379/Son-Tung-Don-Nam-Moi-01.jpeg", "https://project3-six-sigma.vercel.app/assets/img/icon1.svg", "https://project3-six-sigma.vercel.app/assets/img/icon1.svg"],
     section2: ["https://project3-six-sigma.vercel.app/assets/img/partner_1.png", "https://project3-six-sigma.vercel.app/assets/img/partner_2.png", "https://project3-six-sigma.vercel.app/assets/img/partner_3.png", "https://project3-six-sigma.vercel.app/assets/img/partner_4.png", "https://project3-six-sigma.vercel.app/assets/img/partner_5.png"],
     title2: "DANH MỤC NỔI BẬT",
-    section3: ["https://project3-six-sigma.vercel.app/assets/img/banner1.jpg", "https://project3-six-sigma.vercel.app/assets/img/banner2.jpg", "https://project3-six-sigma.vercel.app/assets/img/banner3.jpg", "https://project3-six-sigma.vercel.app/assets/img/banner4.jpg"],
+    section3: ["https://th.bing.com/th/id/OIP.7r7jLGaZfD6Gwm0qhNRCDAHaFo?rs=1&pid=ImgDetMain", "https://th.bing.com/th/id/OIP.sw3XSAWj7eh4evrzgDhd5wHaEf?rs=1&pid=ImgDetMain", "https://learnenglish.britishcouncil.org/sites/podcasts/files/RS7351_ThinkstockPhotos-492813404-hig.jpg", "https://voicecode.io/w3.jpg"],
     title3: "CẬP NHẬT VỀ ƯU ĐÃI MỚI NHẤT CỦA CHÚNG TÔI"
   } 
   return (
@@ -87,7 +87,7 @@ export default function AboutPage() {
               </div>
               <div className="relative truncate rounded-[20px]" data-aos="zoom-in" data-aos-delay="600">
                 <a href="/">
-                  <h3 className="absolute md:top-[20px] top-[17px] md:left-[36px] left-[24px] font-bold md:text-[36px] text-[24px] text-white"> Gym</h3>
+                  <h3 className="absolute md:top-[20px] top-[17px] md:left-[36px] left-[24px] font-bold md:text-[36px] text-[24px] text-white">Chill</h3>
                   <img className="w-full md:h-[289px] h-[190px] object-cover" src={data.section3[3]} alt="" />
                 </a>
               </div>
