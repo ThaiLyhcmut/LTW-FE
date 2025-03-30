@@ -1,11 +1,10 @@
 'use client'
 
-import { createAppKit, useAppKit, useAppKitAccount } from '@reown/appkit/react'
+import { createAppKit, useAppKit, useAppKitAccount, useAppKitProvider } from '@reown/appkit/react'
 import { EthersAdapter } from '@reown/appkit-adapter-ethers'
 import { sepolia } from '@reown/appkit/networks'
 import { shortenEthereumAddress } from './lib/utils' 
-import { contractAddresses } from './lib/contracts/contractData' 
-import { GoLinkExternal } from 'react-icons/go'
+
 
 // 1. Get projectId at https://cloud.reown.com
 const projectId = 'd95bd93a4380fce4958e677a463f5ff6'
@@ -26,12 +25,27 @@ createAppKit({
   projectId,
   features: {
     analytics: true // Optional - defaults to your Cloud configuration
-  }
+  },
 })
 
 export default function ConnectWallet() {
     const { open, close } = useAppKit()
     const { address, caipAddress, isConnected } = useAppKitAccount();
+    // const { walletProvider } : any = useAppKitProvider('eip155')
+    // const fetchContractData = async () => {
+    //   if(walletProvider) {
+    //     // getbalance
+    //     const ethersProvider = new BrowserProvider(walletProvider)
+    //     const contractBalance = await ethersProvider.getBalance(contractAddr)
+    //     console.log(formatEther(contractBalance))
+    //     const contract = new Contract(contractAddr, contractABI, ethersProvider)
+
+    //     const funders = await contract
+    //   }
+    // }
+    // useEffect(() => {
+    //   fetchContractData()
+    // }, [walletProvider])
     const handleConnect = async () => {
         try {
             await open()

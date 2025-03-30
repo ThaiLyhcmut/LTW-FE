@@ -6,7 +6,7 @@ import Loading from "@/app/(client)/components/loading/loading"
 import { useAuth } from "@/app/(client)/context/AuthContext"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
-import ConnectWallet from "@/app/(client)/components/connectWallet/connectWallet"
+import Buy from "@/app/(client)/components/buyVip/buyVip"
 
 export default function InfoPage() {
   
@@ -37,9 +37,9 @@ export default function InfoPage() {
           <p className="text-xl mb-[10px]"> <strong>Name:</strong>  {auth.username}</p>
           <p className="text-xl mb-[10px]"><strong>Email:</strong>  {auth.email}</p>
           <p className="text-xl mb-[10px]"><strong>Country:</strong>  {auth.country_code}</p>
-          
-          <ConnectWallet/>
-
+          <div>
+            <Buy/>
+          </div>
           <button 
             onClick={handleLogout} 
             className="mt-4 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded cursor-pointer"
