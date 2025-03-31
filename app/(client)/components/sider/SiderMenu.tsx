@@ -20,7 +20,7 @@ import { MdBroadcastOnPersonal } from "react-icons/md";
 import { MdEmojiEvents } from "react-icons/md";
 
 export default function SiderMenu(){
-  const { isLogin } = useAuth();
+  const { isLogin, auth } = useAuth();
   const pathname = usePathname();
   interface MenuLink {
     icon: ReactNode,
@@ -101,7 +101,7 @@ export default function SiderMenu(){
           {Menu.map((item,index) => (
             (isLogin != undefined)?(
               (isLogin == true)?(
-                (item.link != "/login" && item.link != "/register")?(
+                (item.link != "/login" && item.link != "/register" && item.link != "/history")?(
                   <li key={index} className={"flex items-center mb-[15px] font-700 hover:text-[#00ADEF] xl:text-[22px] text-[14px] capitalize line-clamp-1 " + (pathname === item.link ? "text-[#00ADEF]" : "text-white" )}>
                     {item.icon}
                     <Link href={item.link} className="ml-[20px]">{item.title}</Link>

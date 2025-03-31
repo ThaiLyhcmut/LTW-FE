@@ -9,11 +9,11 @@ import { useState } from "react"
 import Buy from "@/app/(client)/components/buyVip/buyVip"
 
 export default function InfoPage() {
-  
+
   const router = useRouter()
   const { logout, auth } = useAuth()
   const [loading, setLoading] = useState(false)
-  
+
   // Xử lý đăng xuất
   const handleLogout = async () => {
     setLoading(true)
@@ -24,7 +24,7 @@ export default function InfoPage() {
     }
     setLoading(false)
   }
-  
+
   return (
     <div className="mx-auto bg-gray-800 text-white p-6 rounded-lg shadow-md">
       <h2 className="text-xl font-bold mb-4 text-center">Thông tin người dùng</h2>
@@ -37,11 +37,28 @@ export default function InfoPage() {
           <p className="text-xl mb-[10px]"> <strong>Name:</strong>  {auth.username}</p>
           <p className="text-xl mb-[10px]"><strong>Email:</strong>  {auth.email}</p>
           <p className="text-xl mb-[10px]"><strong>Country:</strong>  {auth.country_code}</p>
+          <p className="text-xl mb-[10px]">
+            <strong>VIP Status:</strong>{" "}
+            {auth.vip ? (
+              <span className="text-green-400 font-semibold">VIP</span>
+            ) : (
+              <span className="text-red-400 font-semibold">Không có VIP</span>
+
+            )}
+          </p>
+
+          {auth.vip && (
+            <p className="text-xl mb-[10px]">
+              <strong>Hết hạn VIP:</strong>{" "}
+              {auth.expired_at ? new Date(auth.expired_at).toLocaleDateString() : "Không xác định"}
+            </p>
+          )}
           <div>
-            <Buy/>
+            <Buy />
           </div>
-          <button 
-            onClick={handleLogout} 
+
+          <button
+            onClick={handleLogout}
             className="mt-4 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded cursor-pointer"
             disabled={loading}
           >
@@ -49,7 +66,7 @@ export default function InfoPage() {
           </button>
         </div>
       ) : (
-        <div><Loading/></div>
+        <div><Loading /></div>
       )}
     </div>
   )

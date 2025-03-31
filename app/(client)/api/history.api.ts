@@ -14,10 +14,11 @@ export const getHistory = async () => {
     return undefined;
   }
 }
-export const saveHistory = async (txHash: string) => {
+export const saveHistory = async (txHash: string, time: number) => {
   try {
     const Request = request("POST", true, {
-      txhash: txHash
+      txhash: txHash,
+      time: time
     })
     const result = await response(`${HTTP_URL}/history`, Request)
     if (result === undefined) {

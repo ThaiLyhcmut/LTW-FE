@@ -17,7 +17,7 @@ export default function VIP({ handleClose }: { handleClose: () => void }) {
 	const { walletProvider }: any = useAppKitProvider('eip155')
 	const [isLoading, setIsLoading] = useState<boolean>()
 	const [txHash, setTxHash] = useState<string | null>(null)
-	const handleBuyVIP = async (amount: number, event: any) => {
+	const handleBuyVIP = async (amount: number, time: number, event: any) => {
 		event.preventDefault();
 		setIsLoading(true);
 		try {
@@ -36,7 +36,7 @@ export default function VIP({ handleClose }: { handleClose: () => void }) {
 				setTxHash(hash)
 				await tx.wait();
 
-				const save = await saveHistory(tx.hash);
+				const save = await saveHistory(tx.hash, time);
 				if (save == undefined) {
 					console.warn("Transaction hash could not be saved to the database.");
 				}
@@ -81,7 +81,7 @@ export default function VIP({ handleClose }: { handleClose: () => void }) {
 						{(!isLoading) ? (
 							<button type="button" onClick={(event) => {
 								const amount = (item.price) * (100 - item.discountPercent) / 100
-								handleBuyVIP(amount, event);
+								handleBuyVIP(amount, item.time, event);
 							}} className="bg-sky-500 text-white px-4 py-2 rounded-lg hover:bg-slate-600 transition-colors font-medium cursor-pointer">
 								{item.text}
 							</button>
