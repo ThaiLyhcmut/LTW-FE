@@ -17,6 +17,7 @@ import { FaHeadphones } from "react-icons/fa6";
 import { MdContactSupport } from "react-icons/md";
 import { IoWallet } from "react-icons/io5";
 import { MdBroadcastOnPersonal } from "react-icons/md";
+import { MdEmojiEvents } from "react-icons/md";
 
 export default function SiderMenu(){
   const { isLogin } = useAuth();
@@ -56,6 +57,11 @@ export default function SiderMenu(){
       icon: <FaHeart/>,
       title: "Bai hat yeu thich",
       link: "/wishlist"
+    },
+    {
+      icon: <MdEmojiEvents />,
+      title: "Su kien",
+      link: "/event"
     },
     {
       icon: <IoWallet />,

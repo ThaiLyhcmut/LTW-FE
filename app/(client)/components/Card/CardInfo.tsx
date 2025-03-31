@@ -1,7 +1,9 @@
+
 export default function CardInfo(props: any) {
   const { image = "", title = "", desc = ""} = props
   return(
     <>
+      
       <div className="flex items-center">
         <div className="w-[180px] aspect-square rounded-[15px] truncate">
           <img src={image} alt={title} className="w-full h-full object-cover" />
@@ -11,6 +13,7 @@ export default function CardInfo(props: any) {
           <div className=" font-[400] text-[14px] text-[#EFEEE0] mt-[10px]">{desc}</div>
         </div>
       </div>
+
     </>
   )
 }

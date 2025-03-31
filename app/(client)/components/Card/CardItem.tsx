@@ -1,9 +1,10 @@
 import Link from "next/link";
-
+import { motion } from "framer-motion";
 export default function CardItem(props: any) {
   const { id = "", image = "", title = "", link = "", desc = "" } = props;
   return (
     <>
+      <motion.div whileHover={{ scale: 1.05 }}>
       <div className="">
         <Link href={link}>
           <div className="w-full aspect-square rounded-[15px]">
@@ -21,6 +22,7 @@ export default function CardItem(props: any) {
           </div>
         </Link>
       </div>
+      </motion.div>
     </>
   );
 }
