@@ -7,43 +7,62 @@ import { checkAuth, otpAuth, registerAuth } from "@/app/(client)/api/auth.api";
 import { useAuth } from "@/app/(client)/context/AuthContext";
 
 export default function RegisterPage() {
-  const { login } = useAuth()
-  const Navigation = useRouter()
-  const handleGetOtp = async (event: any) => {
+  const { login } = useAuth();
+  const Navigation = useRouter();
+  const handleGetOtp = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const email = event.target.email.value;
-    const check = await otpAuth(email)
-    if (check != undefined) {
-      alert("gui otp thanh cong")
-    }else {
-      alert("gui otp khong thanh cong")
+    const emailInput = event.currentTarget.elements.namedItem("email") as HTMLInputElement;
+    const email = emailInput?.value;
+    if (!email) {
+      alert("Vui lòng nhập email");
+      return;
     }
-  }
-  const handleRegister = async (event: any) => {
+    const check = await otpAuth(email);
+    if (check) {
+      alert("Gửi OTP thành công");
+    } else {
+      alert("Gửi OTP không thành công");
+    }
+  };
+
+  const handleRegister = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const email = event.target.email.value;
-    const fullName = event.target.fullName.value;
-    const password = event.target.password.value;
-    const otp = event.target.otp.value;
-    const register = await registerAuth(fullName, email, password, otp)
-    if (register == undefined) {
-      alert("Đăng ký không thành công")
-    }else {
-      alert("Dang Ky Thanh Cong")
-      const data = await checkAuth()
-      login(data)
-      Navigation.push("/")
+    const form = event.currentTarget;
+    const fullName = (form.elements.namedItem("username") as HTMLInputElement).value;
+    const password = (form.elements.namedItem("password") as HTMLInputElement).value;
+    const otp = (form.elements.namedItem("otp") as HTMLInputElement).value;
+    const country_code = (form.elements.namedItem("country_code") as HTMLInputElement).value;
+    const fileInput = form.elements.namedItem("file") as HTMLInputElement;
+    const file = fileInput.files?.[0];
+    if (!file) {
+      alert("Vui lòng them Avatar");
+      return;
     }
-  }
+    // Get email from the OTP form or a shared state if needed
+    const emailInput = document.getElementById("email") as HTMLInputElement;
+    const email = emailInput?.value;
+    if (!email) {
+      alert("Vui lòng nhập email và lấy OTP trước");
+      return;
+    }
+    const register = await registerAuth(fullName, email, password, otp, country_code, file);
+    if (!register) {
+      alert("Đăng ký không thành công");
+    } else {
+      alert("Đăng ký thành công");
+      const data = await checkAuth();
+      login(data);
+      Navigation.push("/");
+    }
+  };
+
   return (
     <>
       <div className="mt-[60px] w-[500px] mx-auto">
         <div className="text-center">
-          <Title
-            text="Đăng Ký Tài Khoản" 
-          />
+          <Title text="Đăng Ký Tài Khoản" />
         </div>
-        <form className="" onSubmit={handleRegister}>
+        <form onSubmit={handleGetOtp}>
           <FormInput
             label="Email"
             type="email"
@@ -53,17 +72,18 @@ export default function RegisterPage() {
             required={true}
           />
           <button
-            type="button"
-            className="w-full h-[50px] bg-[#00ADEF] rounded-[6px] text-white text-center text-[16px] font-[700] mb-[20px]"
-            onClick={handleGetOtp}
+            type="submit"
+            className="w-full h-[50px] bg-[#00ADEF] rounded-[6px] text-white text-center text-[16px] font-[700] mb-[20px] cursor-pointer"
           >
             GET OTP
           </button>
+        </form>
+        <form className="" onSubmit={handleRegister}>
           <FormInput
             label="Họ Tên"
             type="text"
-            name="fullName"
-            id="fullName"
+            name="username"
+            id="username"
             placeholder="Ví dụ: Le Van A"
             required={true}
           />
@@ -76,14 +96,29 @@ export default function RegisterPage() {
           />
           <FormInput
             label="OTP"
-            type="otp"
+            type="text"
             name="otp"
             id="otp"
             required={true}
           />
-          <FormButton text="Đăng Ký" />
-            
 
+          <FormInput
+            label="Country"
+            type="text"
+            name="country_code"
+            id="country_code"
+            placeholder="VD: VN"
+            required={true}
+          />
+
+          <input
+            type="file"
+            name="file"
+            id="file"
+            required={true}
+            className="cursor-pointer my-[20px]"
+          />
+          <FormButton text="Đăng Ký" />
         </form>
       </div>
     </>

@@ -1,28 +1,37 @@
+'use client';
+
+import { useEffect, useState } from "react";
+import Loading from "../../components/loading/loading";
+import { getAbout } from "../../api/about.api";
+interface AboutData {
+  id: number;
+  title: string;
+  desc: string;
+  type1_total: string;
+  type1_desc: string;
+  type2_total: string;
+  type2_desc: string;
+  type3_total: string;
+  type3_desc: string;
+  section1: string[];  // danh sách ảnh/icon
+  section2: string[];  // danh sách đối tác
+  title2: string;
+  section3: string[];  // danh sách danh mục nổi bật
+  title3: string;
+}
 
 
 
 export default function AboutPage() {
-  const data = {
-    title: "MUSICTHAILY ÂM NHẠC PHONG CÁCH, HIỆN ĐẠI",
-    desc: "Chúng tôi chuyên cung cấp nhiều loại âm nhạc ở nhiều quốc gia, được sáng tác bởi những ca sĩ nổi tiếng và hiện đại.",
-    type1: {
-      total: "200+",
-      desc: "Thương Hiệu"
-    },
-    type2: {
-      total: "2000+",
-      desc: "Bản Nhạc Chất Lượng"
-    },
-    type3: {
-      total: "30,000+",
-      desc: "Khách Hàng"
-    },
-    section1: ["https://media-cdn-v2.laodong.vn/Storage/NewsPortal/2023/1/1/1133379/Son-Tung-Don-Nam-Moi-01.jpeg", "https://project3-six-sigma.vercel.app/assets/img/icon1.svg", "https://project3-six-sigma.vercel.app/assets/img/icon1.svg"],
-    section2: ["https://project3-six-sigma.vercel.app/assets/img/partner_1.png", "https://project3-six-sigma.vercel.app/assets/img/partner_2.png", "https://project3-six-sigma.vercel.app/assets/img/partner_3.png", "https://project3-six-sigma.vercel.app/assets/img/partner_4.png", "https://project3-six-sigma.vercel.app/assets/img/partner_5.png"],
-    title2: "DANH MỤC NỔI BẬT",
-    section3: ["https://th.bing.com/th/id/OIP.7r7jLGaZfD6Gwm0qhNRCDAHaFo?rs=1&pid=ImgDetMain", "https://th.bing.com/th/id/OIP.sw3XSAWj7eh4evrzgDhd5wHaEf?rs=1&pid=ImgDetMain", "https://learnenglish.britishcouncil.org/sites/podcasts/files/RS7351_ThinkstockPhotos-492813404-hig.jpg", "https://voicecode.io/w3.jpg"],
-    title3: "CẬP NHẬT VỀ ƯU ĐÃI MỚI NHẤT CỦA CHÚNG TÔI"
-  } 
+  const [data, setData] = useState<AboutData>()
+  useEffect(() => {
+    const getData = async() => {
+      const Data = await getAbout()
+      setData(Data)
+    }
+    getData()
+  }, [])
+  if (!data) return <Loading/>
   return (
     <>
       <section className="bg-[#1a1a1a] text-white rounded-t-[20px]">
@@ -33,16 +42,16 @@ export default function AboutPage() {
             <a className="bg-white text-black py-[16px] px-[64px] sm:inline-block block font-medium rounded-[62px] text-center" href="/" data-aos="fade-up" data-aos-duration="8000" data-aos-delay="800">Xem ngay</a>
             <div className="flex sm:flex-nowrap flex-wrap sm:mt-[50px] mt-[30px]" data-aos="fade-up" data-aos-duration="8000" data-aos-delay="600">
               <div className="sm:pr-[32px] sm:mr-[32px] sm:border-r border-gray-500 sm:w-auto w-[50%] sm:text-left text-center">
-                <div className="xl:text-[40px] text-[24px] font-bold">{data.type1.total}</div>
-                <div className="opacity-80 xl:text-[16px] text-[12px]">{data.type1.desc}</div>
+                <div className="xl:text-[40px] text-[24px] font-bold">{data.type1_total}</div>
+                <div className="opacity-80 xl:text-[16px] text-[12px]">{data.type1_desc}</div>
               </div>
               <div className="sm:pr-[32px] sm:mr-[32px] sm:border-r border-gray-500 sm:w-auto w-[50%] sm:text-left text-center">
-                <div className="xl:text-[40px] text-[24px] font-bold">{data.type2.total}</div>
-                <div className="opacity-80 xl:text-[16px] text-[12px]">{data.type2.desc}</div>
+                <div className="xl:text-[40px] text-[24px] font-bold">{data.type2_total}</div>
+                <div className="opacity-80 xl:text-[16px] text-[12px]">{data.type2_desc}</div>
               </div>
               <div className="w-full sm:text-left text-center">
-                <div className="xl:text-[40px] text-[24px] font-bold">{data.type3.total}</div>
-                <div className="opacity-80 xl:text-[16px] text-[12px]">{data.type3.desc}</div>
+                <div className="xl:text-[40px] text-[24px] font-bold">{data.type3_total}</div>
+                <div className="opacity-80 xl:text-[16px] text-[12px]">{data.type3_desc}</div>
               </div>
             </div>
           </div>

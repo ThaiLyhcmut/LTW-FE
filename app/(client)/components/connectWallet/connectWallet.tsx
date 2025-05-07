@@ -31,21 +31,6 @@ createAppKit({
 export default function ConnectWallet() {
     const { open, close } = useAppKit()
     const { address, caipAddress, isConnected } = useAppKitAccount();
-    // const { walletProvider } : any = useAppKitProvider('eip155')
-    // const fetchContractData = async () => {
-    //   if(walletProvider) {
-    //     // getbalance
-    //     const ethersProvider = new BrowserProvider(walletProvider)
-    //     const contractBalance = await ethersProvider.getBalance(contractAddr)
-    //     console.log(formatEther(contractBalance))
-    //     const contract = new Contract(contractAddr, contractABI, ethersProvider)
-
-    //     const funders = await contract
-    //   }
-    // }
-    // useEffect(() => {
-    //   fetchContractData()
-    // }, [walletProvider])
     const handleConnect = async () => {
         try {
             await open()

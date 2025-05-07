@@ -1,4 +1,4 @@
-import { deleteToken, getToken, HTTP_URL, request, response, saveToken } from "./api";
+import { deleteToken, getToken, HTTP_URL, request, requestFormData, response, saveToken } from "./api";
 
 export const loginAuth = async (email: string, password: string) => {
   try {
@@ -57,24 +57,27 @@ export const otpAuth = async (email: string) => {
   }
 }
 
-export const registerAuth = async (username: string, email: string, password: string, otp: string) => {
+export const registerAuth = async (username: string, email: string, password: string, otp: string, country_code: string, file: File) => {
   try {
-    const Request = request("POST", false, {
-      username: username,
-      email: email,
-      password: password,
-      otp: otp
-    })
-    const result = await response(`${HTTP_URL}/register`, Request)
+    const formData = new FormData();
+    formData.append('username', username);
+    formData.append('email', email);
+    formData.append('password', password);
+    formData.append('otp', otp);
+    formData.append('country_code', country_code)
+    formData.append('file', file)
+    const Request = requestFormData(false, formData);
+    const result = await response(`${HTTP_URL}/register`, Request);
     if (result == undefined) {
-      console.error("error register")
-      return undefined
+      console.error("error register");
+      return undefined;
     }
-    saveToken(result.token, result.country_code)
+    saveToken(result.token, result.country_code);
     return result;
-  }catch (error) {
-    console.error(error)
-    return undefined
+
+  } catch (error) {
+    console.error(error);
+    return undefined;
   }
 }
 
