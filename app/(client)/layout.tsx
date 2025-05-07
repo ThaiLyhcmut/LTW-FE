@@ -38,7 +38,7 @@ export default function RootLayout({
               <div className="flex-1 sm:ml-[20px] mx-[2px]">
                 <Suspense><Search /></Suspense>
                 <main className="mb-[120px] mt-[30px]">
-                  {children}
+                <Suspense>{children}</Suspense>
                 </main>
               </div>
             </div>
